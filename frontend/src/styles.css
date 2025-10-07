@@ -1,0 +1,326 @@
+/* Enhanced styles for Avivi Invest frontend with RTL support */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', 'Arial', 'Helvetica', sans-serif;
+  background-color: #f5f5f5;
+  direction: ltr; /* Default LTR, will be overridden by RTL class */
+  line-height: 1.6;
+}
+
+body.rtl {
+  direction: rtl;
+  font-family: 'Segoe UI', 'Arial', 'Helvetica', 'David', 'Miriam', sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+section {
+  margin: 20px 0;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+section:hover {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+input, button, select {
+  margin: 5px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #0ea5a4;
+  box-shadow: 0 0 0 3px rgba(14, 165, 164, 0.1);
+}
+
+button {
+  background-color: #0ea5a4;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+button:hover {
+  background-color: #0d9488;
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+pre {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto;
+  direction: ltr; /* Code should always be LTR */
+  border: 1px solid #e9ecef;
+}
+
+/* RTL specific styles */
+.rtl {
+  direction: rtl;
+}
+
+.rtl .grid-auto-fit {
+  direction: rtl;
+}
+
+.rtl input, .rtl button, .rtl select {
+  text-align: right;
+}
+
+.rtl .text-left {
+  text-align: right;
+}
+
+.rtl .text-right {
+  text-align: left;
+}
+
+/* Language switcher */
+.language-switcher {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  padding: 5px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  backdrop-filter: blur(10px);
+}
+
+.rtl .language-switcher {
+  right: auto;
+  left: 20px;
+}
+
+.language-switcher button {
+  background: transparent;
+  border: none;
+  padding: 8px 16px;
+  margin: 0;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.language-switcher button.active {
+  background-color: #0ea5a4;
+  color: white;
+  box-shadow: 0 2px 4px rgba(14, 165, 164, 0.3);
+}
+
+.language-switcher button:hover:not(.active) {
+  background-color: #f8f9fa;
+}
+
+/* Navigation */
+nav {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* Cards and containers */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  section {
+    margin: 10px 0;
+    padding: 15px;
+  }
+  
+  .language-switcher {
+    top: 10px;
+    right: 10px;
+  }
+  
+  .rtl .language-switcher {
+    right: auto;
+    left: 10px;
+  }
+
+  nav {
+    padding: 5px 0;
+  }
+
+  nav button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  section {
+    padding: 10px;
+    margin: 5px 0;
+  }
+
+  .language-switcher {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    margin: 10px auto;
+    display: inline-block;
+  }
+}
+
+/* Loading spinner */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #0ea5a4;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error and success messages */
+.message {
+  padding: 15px;
+  border-radius: 8px;
+  margin: 10px 0;
+  border-left: 4px solid;
+}
+
+.rtl .message {
+  border-left: none;
+  border-right: 4px solid;
+}
+
+.message.error {
+  background-color: #f8d7da;
+  border-color: #dc3545;
+  color: #721c24;
+}
+
+.message.success {
+  background-color: #d4edda;
+  border-color: #28a745;
+  color: #155724;
+}
+
+.message.info {
+  background-color: #e7f3ff;
+  border-color: #0ea5a4;
+  color: #004085;
+}
+
+.message.warning {
+  background-color: #fff3cd;
+  border-color: #ffc107;
+  color: #856404;
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #495057;
+}
+
+tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Charts */
+.chart-container {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0ea5a4;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0d9488;
+}
